@@ -1,3 +1,4 @@
+/*
 const { Interaction, Embed, Option } = require("../lib/interactions")
 const { def, isValidSetting, getUserSettings, setUserSettings } = require("../utils/settings")
 const command = new Interaction("CHAT_INPUT","setting","change your preferences for converter")
@@ -44,4 +45,4 @@ command.onUsed((res) => {
     res.respond()
 })
 
-module.exports = command
+module.exports = command*/

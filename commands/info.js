@@ -1,3 +1,4 @@
+/*
 const { Interaction, InteractionHandler, Embed, Option } = require("../lib/interactions")
 const command = new Interaction("CHAT_INPUT","info","displays some info about the bot")
 
@@ -10,4 +11,4 @@ command.onUsed((res) => {
     res.respond()
 })
 
-module.exports = command
+module.exports = command*/

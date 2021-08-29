@@ -1,5 +1,5 @@
 const { doConversions } = require("../lib/measurements"),
-    Embed = require("../utils/embed")
+    getCmds = require("../index").getCmds
 
 /**
  * 
@@ -24,11 +24,9 @@ const { doConversions } = require("../lib/measurements"),
  * @param {*} msg 
  */
 const run = ( args, msg ) => {
-    args.shift()
-    const embed = parseMessage(args.join(" "), msg.author_id)
-    embed.title = `${msg.author.username}`
-    embed.setFooter("missing a conversion? edit and make PR on github.com/ffamilyfriendly/converter/blob/main/lib/measurements.js")
-    msg.reply(embed.toText())
+    if(msg.author_id != "01EXC6K282P9SD3T6TD5EC1ETE") return
+    getCmds()
+    msg.reply("```\ndone. \n```")
 }
 
 module.exports = run

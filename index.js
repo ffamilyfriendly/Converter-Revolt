@@ -1,15 +1,29 @@
 const config = require("dotenv").config().parsed,
-    { InteractionHandler } = require("./lib/interactions"),
+    revolt = require("revolt.js"),
     { startLoop } = require("./utils/currency"),
     fs = require("fs")
 
-const handler = new InteractionHandler(config.TOKEN,"592814450084675594")
-const commands = fs.readdirSync("./commands").map(f => require(`./commands/${f}`)) 
+const client = new revolt.Client()
 
-commands.forEach(c => handler.handle(c))
-startLoop()
-if(process.argv[2]) {
-    const id = process.argv[2] == "global" ? null : process.argv[2]
-    commands.forEach(c => c.addToDiscord(id))
+client.on("ready", () => {
+    console.info(`logged in as ${client.user?.username}`)
+})
+
+const getCmds = () => {
+    return new Map(fs.readdirSync("./commands").map(f => { return [ f.split(".")[0], require(`./commands/${f}`) ] }))
 }
+
+module.exports = { getCmds }
+
+const commands = getCmds()
+
+client.on("message", (msg) => {
+    if(!msg.content.startsWith("/")) return
+    const args = msg.content.substr(1).split(" ")
+    console.log(commands, commands[args[0]])
+    if(commands.has(args[0])) commands.get(args[0])(args, msg)
+})
+
+client.loginBot(config.TOKEN)
+//startLoop()
 
