@@ -28,6 +28,7 @@ const run = async ( args, msg ) => {
     if(!args[1]) {
         const messages = await msg.channel.fetchMessages({ limit: 2 })
         msg = messages[1]
+        if(!msg) return msg.reply("uh oh. Bot had issues")
         args = msg.content.split(" ")
     }
     const embed = parseMessage(args.join(" "), msg.author_id)
