@@ -20,10 +20,9 @@ const commands = getCmds()
 client.on("message", (msg) => {
     if(!msg.content.startsWith("/")) return
     const args = msg.content.substr(1).split(" ")
-    console.log(commands, commands[args[0]])
     if(commands.has(args[0])) commands.get(args[0])(args, msg)
 })
 
 client.loginBot(config.TOKEN)
-//startLoop()
+startLoop()
 

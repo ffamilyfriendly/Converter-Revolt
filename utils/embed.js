@@ -15,7 +15,7 @@ class Embed {
     }
 
     toText() {
-        return `# ${this.title}\n ${this.description}\n${this.fields.join("\n")} \n\n\n\$\\small{\\text{${this.footer}}}$\n`
+        return `# ${this.title}\n ${this.description}\n${this.fields.join("\n")} \n\$\\small{\\text{${this.footer}}}$\n`
     }
 }
 
