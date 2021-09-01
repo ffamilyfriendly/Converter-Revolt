@@ -23,8 +23,13 @@ const { doConversions } = require("../lib/measurements"),
  * @param {array} args 
  * @param {*} msg 
  */
-const run = ( args, msg ) => {
+const run = async ( args, msg ) => {
     args.shift()
+    if(!args[1]) {
+        const messages = await msg.channel.fetchMessages({ limit: 2 })
+        msg = messages[1]
+        args = msg.content.split(" ")
+    }
     const embed = parseMessage(args.join(" "), msg.author_id)
     embed.title = `${msg.author.username}`
     embed.setFooter("missing a conversion? edit and make PR on github.com/ffamilyfriendly/converter/blob/main/lib/measurements.js")

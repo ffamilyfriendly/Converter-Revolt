@@ -6,7 +6,7 @@ fork this repo, edit https://github.com/ffamilyfriendly/converter/blob/main/lib/
 if you are lazy you can also create an issue on this repo and I might add it for you
 
 ## my instance
-https://discord.com/api/oauth2/authorize?client_id=880097206818988043&permissions=0&scope=bot%20applications.commands
+https://app.revolt.chat/bot/01FE9WH8VQYYX9YTK1MXAWDQ3H
 
 ## host your own
 to host your own instance you need to:
@@ -14,15 +14,3 @@ to host your own instance you need to:
 * rename example.env to .env
 * configure your discord application (add interaction url to whatever port you configured in .env)
 * run the bot!
-  
-### register commands
-to register commands you need to start the bot with the first argument being either a server id or global for adding the commands globaly.
-
-**adding server specific commands (for debugging):**
-`node . 874566459429355581` with "874566459429355581" being your server
-
-**adding commands globally:**
-`node . global`
-
-**do note:**
-you dont need to register commands every time you start the bot. The only time you should pass arguments is if you have changed any code related to any command or if you start the bot for the first time
